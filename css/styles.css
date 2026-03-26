@@ -124,3 +124,17 @@ select {
   height: 120px;
   width: 100%;
 }
+
+.lock-btn {
+  margin-top: 1px;
+  padding: 4px 8px;
+  border: none;
+  background: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.lock-btn:hover {
+  background: #ddd;
+}

@@ -75,34 +75,52 @@ select {
 }
 
 
-.palette-section {
-  width: 100%;
-}
-
 #palette {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
   width: 100%;
   margin-top: 20px;
 }
 
 
 .color-box {
-  height: 120px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: rgb(214, 31, 31);
-  font-weight: bold;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 
 .color-box:hover {
-  transform: scale(1.05);
-  transition: 0.2s;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.color-info {
+  background: #50464677;
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid #50464677;
+}
+
+.hex {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.hsl {
+  font-size: 0.75rem;
+  color: #413b3b;
+  margin-top: 4px;
+}
+
+.color-preview {
+  height: 120px;
+  width: 100%;
 }

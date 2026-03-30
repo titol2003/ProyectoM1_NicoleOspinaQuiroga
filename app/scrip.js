@@ -81,7 +81,7 @@ button.addEventListener("click", function () {
         box.innerHTML = `
             <div class="color-preview" style="background:${color};"></div>
             <div class="color-info">
-                <p class="hex">${displayText}</p>
+                <p class="color-code">${displayText}</p>
                 <button class="lock-btn">🔓</button>
             </div>
         `;
@@ -98,6 +98,22 @@ button.addEventListener("click", function () {
         lockBtn.addEventListener("click", () => {
             lockedColors[i] = !lockedColors[i];
             lockBtn.textContent = lockedColors[i] ? "🔒" : "🔓";
+        });
+
+        // Copiar al hacer click (excepto el botón)
+        box.addEventListener("click", (e) => {
+            if (e.target.classList.contains("lock-btn")) return;
+
+            navigator.clipboard.writeText(displayText);
+
+            const text = box.querySelector(".color-code");
+            const original = text.textContent;
+
+            text.textContent = "¡Copiado!";
+
+            setTimeout(() => {
+                text.textContent = original;
+            }, 1000);
         });
 
         // 🔹 Agregar al DOM

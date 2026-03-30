@@ -2,6 +2,7 @@
 const button = document.getElementById("generate")
 const sizeSelect = document.getElementById("size")
 const palette = document.getElementById("palette")
+const formatSelect = document.getElementById("format")
 
 // 🔹 Array para guardar estados de bloqueo
 let lockedColors = [];
@@ -29,6 +30,7 @@ function randomHSL() {
 button.addEventListener("click", function () {
 
     const size = parseInt(sizeSelect.value);
+    const format = formatSelect.value;
 
     if (lockedColors.length !== size) {
     lockedColors = [];
@@ -65,6 +67,8 @@ button.addEventListener("click", function () {
             hsl = randomHSL();
         }
 
+        let displayText = format === "hex" ? color : hsl;
+
         // 🔹 Crear tarjeta
         const box = document.createElement("div");
         box.classList.add("color-box");
@@ -77,8 +81,7 @@ button.addEventListener("click", function () {
         box.innerHTML = `
             <div class="color-preview" style="background:${color};"></div>
             <div class="color-info">
-                <p class="hex">${color}</p>
-                <p class="hsl">${hsl}</p>
+                <p class="hex">${displayText}</p>
                 <button class="lock-btn">🔓</button>
             </div>
         `;

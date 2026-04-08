@@ -138,3 +138,17 @@ select {
 .lock-btn:hover {
   background: #ddd;
 }
+
+.footer {
+  margin-top: 50px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #3d8f40, #56ce5c);
+  color: white;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}

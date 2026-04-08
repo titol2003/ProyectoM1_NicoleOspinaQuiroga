@@ -104,7 +104,7 @@ button.addEventListener("click", function () {
         box.addEventListener("click", (e) => {
             if (e.target.classList.contains("lock-btn")) return;
 
-            navigator.clipboard.writeText(displayText);
+            navigator.clipboard.writeText(box.dataset.current || displayText);
 
             const text = box.querySelector(".color-code");
             const original = text.textContent;
@@ -118,6 +118,31 @@ button.addEventListener("click", function () {
 
         // 🔹 Agregar al DOM
         palette.appendChild(box);
+    }
+});
+
+formatSelect.addEventListener("change", function () {
+
+    const format = formatSelect.value;
+
+    const boxes = palette.children;
+
+    for (let box of boxes) {
+
+        const color = box.dataset.hex;
+        const hsl = box.dataset.hsl;
+
+        const textElement = box.querySelector(".color-code");
+
+        // Cambiar texto según formato
+        if (format === "hex") {
+            textElement.textContent = color;
+        } else {
+            textElement.textContent = hsl;
+        }
+
+        // 🔥 IMPORTANTE: actualizar el valor para copiar
+        box.dataset.current = format === "hex" ? color : hsl;
     }
 });
 
